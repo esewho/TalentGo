@@ -1,0 +1,28 @@
+section {
+	height: 100%;
+	width: 80%;
+	background-color: grey;
+}
+
+.defaultContainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	height: 95%;
+	width: 100%;
+	background-color: grey;
+}
+
+.container {
+	display: flex;
+	flex-direction: row;
+	height: 100%;
+	width: 100%;
+	background-color: white;
+}
+
+@media (width <= 1650px) {
+	section {
+		width: 100%;
+	}
+}
