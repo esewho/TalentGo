@@ -22,7 +22,7 @@ export default function JobList() {
 			{!loading ? (
 				jobs.map((job) => <CardJob key={job.id} job={job} />)
 			) : (
-				<p style={{ color: "black" }}>Cargando trabajos...</p>
+				<p>Cargando trabajos...</p>
 			)}
 		</div>
 	)

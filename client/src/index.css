@@ -1,19 +1,33 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+	font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+	line-height: 1.5;
+	font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+	color-scheme: light dark;
+	color: rgba(255, 255, 255, 0.87);
+	background-color: #242424;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  margin: 0;
-  padding: 0px;
+	margin: 0;
+	padding: 0px;
+}
+/* variable de colores  */
+
+:root {
+	--primary-text: #0e0e0e;
+	--secondary-text: #303030;
+	--primary-bg: #f8f8f8;
+	--secondary-bg: #d6d6d6;
+	--primary-color: #007bff;
+	--secondary-color: #0056b3;
+	--primary-border: rgba(148, 148, 148, 0.357);
+	--primary-shadow: rgba(0, 0, 0, 0.382);
+	--selected-bg: rgba(220, 228, 239, 0.798);
+	--primary-icon: #666666;
 }

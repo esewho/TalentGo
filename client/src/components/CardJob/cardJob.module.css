@@ -1,12 +1,11 @@
 .card {
 	display: flex;
 	flex-direction: row;
-
+	position: relative;
 	align-items: center;
 	gap: 10px;
-
 	transition: transform 0.2s ease-in-out;
-	color: black;
+	color: var(--primary-text);
 	padding: 20px 20px;
 	cursor: pointer;
 }
@@ -14,9 +13,9 @@
 article {
 	height: 125px;
 	width: 100%;
-	background: white;
+	background: var(--primary-bg);
 
-	border-top: 1px solid rgba(148, 148, 148, 0.357);
+	border-top: 1px solid var(--primary-border);
 }
 
 .logo {
@@ -29,16 +28,20 @@ article {
 .cardContent {
 	display: flex;
 	flex-direction: column;
-	color: black;
+	color: var(--primary-text);
 }
 .cardContent h3 {
 	font-size: 18px;
+	max-width: 400px;
 	padding: 0;
 	margin: 0;
-	color: rgb(12, 12, 12);
+	color: var(--primary-text);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 article :hover h3 {
-	color: blue;
+	color: var(--primary-color);
 	text-decoration-line: underline;
 }
 
@@ -46,5 +49,11 @@ article :hover h3 {
 	font-size: 16px;
 	padding: 0;
 	margin: 0;
-	color: rgb(81, 81, 81);
+	color: var(--secondary-text);
+}
+
+.dateJob {
+	position: absolute;
+	top: 0;
+	right: 20px;
 }

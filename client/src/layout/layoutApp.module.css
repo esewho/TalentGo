@@ -4,5 +4,5 @@
 	height: 100vh;
 	width: 100%;
 	overflow-x: hidden;
-	background-color: blue;
+	background-color: var(--secondary-bg);
 }

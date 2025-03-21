@@ -3,6 +3,20 @@ import style from "./cardJob.module.css"
 import { useNavigate } from "react-router-dom"
 import { useParams } from "react-router-dom"
 
+const translateDate = (date) => {
+	const currentDate = new Date()
+	const postedDate = new Date(date)
+
+	const differenceInTime = currentDate - postedDate
+	const differenceInDays = Math.floor(differenceInTime / (1000 * 60 * 60 * 24))
+
+	return differenceInDays == 0
+		? "Published today"
+		: differenceInDays == 1
+		? "Published 1 day ago"
+		: `Published ${differenceInDays} days ago`
+}
+
 export default function CardJob({ job }) {
 	const { jobId: selectedJobId } = useParams()
 
@@ -17,7 +31,14 @@ export default function CardJob({ job }) {
 	return (
 		<article
 			onClick={handlerJobDetail}
-			style={isSelected ? { backgroundColor: "#f8f8f8" } : {}}
+			style={
+				isSelected
+					? {
+							backgroundColor: "var(--selected-bg)",
+							borderLeft: "3px solid var(--primary-color)",
+					  }
+					: {}
+			}
 		>
 			<div className={style.card}>
 				<img src={job.company_logo} alt={job.company} className={style.logo} />
@@ -26,7 +47,10 @@ export default function CardJob({ job }) {
 					<h3
 						style={
 							isSelected
-								? { color: "blue", textDecorationLine: "underline" }
+								? {
+										color: "var(--primary-color)",
+										textDecorationLine: "underline",
+								  }
 								: {}
 						}
 					>
@@ -34,6 +58,9 @@ export default function CardJob({ job }) {
 					</h3>
 					<h5>{job.company_name}</h5>
 					<h5>{job.candidate_required_location}</h5>
+				</div>
+				<div className={style.dateJob}>
+					<p>{translateDate(job.publication_date)}</p>
 				</div>
 			</div>
 		</article>
