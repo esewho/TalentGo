@@ -21,6 +21,6 @@ section {
 
 @media (width <= 1650px) {
 	section {
-		width: 100%;
+		width: 85%;
 	}
 }

@@ -5,9 +5,9 @@ class JobsHandler {
 	constructor() {}
 	static async getJobs(req, res) {
 		try {
-			const { title } = req.query
+			const { title, offset } = req.query
 
-			const jobs = await JobsController.getJobs({ title })
+			const jobs = await JobsController.getJobs({ title, offset })
 			return res.status(200).json(jobs)
 		} catch (error) {
 			console.log(error)

@@ -4,14 +4,23 @@ const { Job } = require("../common/config/db")
 const { Category } = require("../common/config/db")
 
 class JobsController {
-	static async getJobs({ title }) {
+	static async getJobs({ offset = 0, title }) {
 		try {
-			const jobsFromDb = await Job.findAll({
+			const jobsFromDb = await Job.findAndCountAll({
 				where: {
 					...(title && {
-						title: {
-							[Op.iLike]: `%${title.toLowerCase()}%`,
-						},
+						[Op.or]: [
+							{
+								title: {
+									[Op.iLike]: `%${title.toLowerCase()}%`,
+								},
+							},
+							{
+								description: {
+									[Op.iLike]: `%${title.toLowerCase()}%`, // 🔥 Buscar también en la descripción
+								},
+							},
+						],
 					}),
 				},
 				include: {
@@ -19,9 +28,11 @@ class JobsController {
 					attributes: ["id", "name"],
 					through: { attributes: [] },
 				},
+				offset: offset,
 
-				limit: 15,
+				limit: 9,
 			})
+			console.log(jobsFromDb)
 
 			return jobsFromDb
 		} catch (error) {

@@ -24,7 +24,7 @@ export default function NavBar() {
 						value={queryInput}
 						onChange={handleChange}
 						type="text"
-						placeholder="Buscar trabajo..."
+						placeholder="Search jobs..."
 					/>
 					<button>
 						<svg width="48" height="48" viewBox="0 0 16 16">

@@ -1,12 +1,59 @@
 .container {
 	display: flex;
 	flex-direction: column;
-	height: 100%;
-	overflow-y: scroll;
+	height: 100%; /* 🔥 Asegura que el contenedor tenga el tamaño completo de la pantalla */
+	overflow-y: scroll; /* Permite el scroll sin afectar el sticky */
 	width: 50%;
-
+	position: relative;
 	align-items: center;
 	background-color: var(--primary-bg);
 	color: var(--primary-text);
 	overflow-x: hidden;
+	justify-content: space-between; /* 🔥 Mantiene el paginado abajo */
+}
+
+.containerCards {
+	flex-grow: 1; /* 🔥 Empuja el paginado hacia abajo si hay pocos trabajos */
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.containerPages {
+	display: flex;
+	width: 100%;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+	border-top: 1px solid var(--primary-border);
+	position: sticky;
+	bottom: 0;
+	background-color: var(--primary-bg);
+}
+
+.containerPages button {
+	cursor: pointer;
+	padding: 5px 15px;
+	background-color: var(--primary-color);
+	font-weight: bold;
+	border-radius: 5px;
+	border: 1px solid var(--primary-color);
+}
+
+.containerPages p {
+	display: flex;
+	justify-content: center;
+	font-weight: bold;
+	width: 260px;
+	font-stretch: wider;
+}
+
+.containerLoading {
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 24px;
+	font-weight: 500;
 }

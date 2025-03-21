@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useRef } from "react"
 import style from "./jobDetail.module.css"
-import { useParams, useLocation, useNavigate } from "react-router-dom"
+import { useParams, useLocation } from "react-router-dom"
 
 const splitSkills = (jobTags = []) => {
 	if (jobTags.length < 3) {
@@ -20,6 +20,7 @@ export default function JobDetail() {
 	const [open, setOpen] = useState(false)
 	const [job, setJob] = useState(null)
 	const { jobId } = useParams()
+	const jobDetailRef = useRef(null)
 
 	const handlerApplyJob = () => {
 		window.open(`${job.url}`, "_blank")
@@ -40,10 +41,15 @@ export default function JobDetail() {
 		fetchJobDetail()
 	}, [jobId])
 
+	useEffect(() => {
+		if (jobDetailRef.current)
+			jobDetailRef.current.scrollTo({ top: 0, behavior: "smooth" })
+	}, [jobId])
+
 	if (!job) return null
 
 	return (
-		<div className={style.jobDetail}>
+		<div className={style.jobDetail} ref={jobDetailRef}>
 			<div className={style.conditions}>
 				<div className={style.containerLogo}>
 					<img src={job.company_logo} alt="company_logo" />
