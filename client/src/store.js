@@ -1,10 +1,11 @@
-import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "./features/counterSlice.js";
+import { configureStore } from "@reduxjs/toolkit"
+
+import searchReducer from "./features/searchSlice.js"
 
 export const store = configureStore({
-  reducer: {
-    counter: counterReducer,
-  },
-});
+	reducer: {
+		search: searchReducer,
+	},
+})
 
-export default { store };
+export default { store }

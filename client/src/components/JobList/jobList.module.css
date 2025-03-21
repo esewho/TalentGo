@@ -8,4 +8,5 @@
 	align-items: center;
 	background-color: var(--primary-bg);
 	color: var(--primary-text);
+	overflow-x: hidden;
 }

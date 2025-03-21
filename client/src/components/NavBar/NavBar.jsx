@@ -1,13 +1,17 @@
 import React from "react"
-import { useState } from "react"
+
+import { useDispatch, useSelector } from "react-redux"
 import style from "./navBar.module.css"
 import { Link } from "react-router-dom"
+import { setQueryInput } from "../../features/searchSlice"
 
-export default function NavBar(onSearch) {
-	const [query, setQuery] = useState("")
+export default function NavBar() {
+	const dispatch = useDispatch()
+	const queryInput = useSelector((state) => state.search.queryInput)
+
 	function handleChange(event) {
 		const value = event.target.value
-		setQuery(value)
+		dispatch(setQueryInput(value))
 	}
 	return (
 		<nav className={style.containerNav}>
@@ -16,7 +20,12 @@ export default function NavBar(onSearch) {
 					<p className={style.pLogo}>TALENTGO</p>
 				</div>
 				<div className={style.input}>
-					<input type="text" placeholder="Buscar trabajo..." />
+					<input
+						value={queryInput}
+						onChange={handleChange}
+						type="text"
+						placeholder="Buscar trabajo..."
+					/>
 					<button>
 						<svg width="48" height="48" viewBox="0 0 16 16">
 							<path d="M2 4.5A2.5 2.5 0 0 1 4.5 2h7A2.5 2.5 0 0 1 14 4.5v7a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 2 11.5zM5 7a2 2 0 1 1 4 0a2 2 0 0 1-4 0m2-3a3 3 0 1 0 1.738 5.445l2.408 2.409a.5.5 0 0 0 .708-.708L9.445 8.738A3 3 0 0 0 7 4" />
