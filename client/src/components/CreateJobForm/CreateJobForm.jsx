@@ -9,6 +9,7 @@ export default function CreateJobForm() {
 		salary: 0,
 		category: "",
 		company: "",
+		location: "",
 	})
 
 	const handleChange = (e) => {
@@ -27,6 +28,38 @@ export default function CreateJobForm() {
 						onChange={handleChange}
 						placeholder="Frontend Developer"
 					/>
+					<label>Salary</label>
+					<input
+						type="number"
+						name="salary"
+						id="salary"
+						onChange={handleChange}
+						placeholder="Ej: 2500$"
+					/>
+					<label>Category</label>
+					<input
+						type="text"
+						name="category"
+						id="category"
+						onChange={handleChange}
+						placeholder="Ej: Marketing"
+					/>
+					<label>Company</label>
+					<input
+						type="text"
+						name="company"
+						id="Company"
+						onChange={handleChange}
+						placeholder="Ej: Google"
+					/>
+					<label>Location</label>
+					<input
+						type="text"
+						name="location"
+						id="location"
+						onChange={handleChange}
+						placeholder="Ej: USA"
+					/>
 					<label>Description</label>
 					<textarea
 						className={style.description}
@@ -36,31 +69,10 @@ export default function CreateJobForm() {
 						onChange={handleChange}
 						placeholder="Describe the job here..."
 					/>
-					<label>Salary</label>
-					<input
-						type="number"
-						name="salary"
-						id="salary"
-						onChange={handleChange}
-						placeholder="2500$"
-					/>
-					<label>Category</label>
-					<input
-						type="text"
-						name="category"
-						id="category"
-						onChange={handleChange}
-						placeholder="Marketing, Designer, etc..."
-					/>
-					<label>Company</label>
-					<input
-						type="text"
-						name="company"
-						id="Company"
-						onChange={handleChange}
-						placeholder="Google"
-					/>
-					<button type="submit">Submit</button>
+
+					<button className={style.buttonSubmit} type="submit">
+						Submit
+					</button>
 				</form>
 			</div>
 			<div className={style.previewContainer}>
@@ -82,14 +94,12 @@ export default function CreateJobForm() {
 						{jobData.company || "Company"}
 					</p>
 					<p>
-						{jobData.description
-							? jobData.description.split("\n").map((line, index) => (
-									<span key={index}>
-										{line}
-										<br />
-									</span>
-							  ))
-							: "Descripción del trabajo..."}
+						<strong>Location: </strong>
+						{jobData.location}
+					</p>
+					<p style={{ whiteSpace: "pre-line" }}>
+						<strong>Description: </strong>
+						<p>{jobData.description}</p>
 					</p>
 				</div>
 			</div>

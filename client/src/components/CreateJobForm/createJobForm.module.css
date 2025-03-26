@@ -36,14 +36,20 @@ textarea {
 	color: var(--primary-text);
 }
 
-button {
+.buttonSubmit {
 	background: var(--primary-color);
 	color: white;
 	font-weight: bold;
+	max-width: 100px;
 	padding: 10px 10px;
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.buttonSubmit:hover {
+	background-color: var(--secondary-color);
 }
 
 .jobCard {
