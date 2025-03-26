@@ -1,81 +1,59 @@
 .mainContainer {
 	display: flex;
-	flex-direction: column;
 	justify-content: center;
-	align-items: center;
-	width: 100%;
+	align-items: flex-start;
+	gap: 30px;
+	padding: 20px;
 	height: 100vh;
-
 	background-color: var(--primary-bg);
 }
 
-.formContainer {
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	align-items: center;
-	width: 85%;
-	max-width: 600px;
-	height: auto;
+.formContainer,
+.previewContainer {
+	background: var(--secondary-bg);
+	color: var(--primary-text);
 	padding: 20px;
-	border-radius: 8px;
-	box-shadow: 0px, 4px, 10px rgba(0, 0, 0, 0.1);
-	background-color: var(--primary-formColor);
+	border-radius: 10px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	width: 45%;
+	max-height: 90vh;
+	overflow-y: auto;
 }
+
 .formContainer form {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
-	align-items: center;
-	width: 100%;
-	gap: 20px;
+	gap: 15px;
 }
 
-.formContainer h1 {
-	color: var(--primary-text);
-	font-size: 2rem;
-	margin-bottom: 20px;
-}
-
-.formContainer input,
-.formContainer select,
-.formContainer textarea {
-	width: 100%;
-	padding: 12px;
-	margin-bottom: 12px;
-	border-radius: 4px;
+input,
+textarea {
+	width: 90%;
+	padding: 10px;
 	border: 1px solid var(--primary-border);
-	font-size: 1rem;
-	background-color: var(--primary-input);
-	transition: border-color 0.3s ease;
+	border-radius: 5px;
+	background-color: var(--primary-bg);
+	color: var(--primary-text);
 }
 
-.formContainer input:focus,
-.formContainer select:focus,
-.formContainer textarea:focus {
-	border-color: white;
-	outline: none;
-}
-
-.formContainer button {
-	padding: 12px 20px;
-	background-color: var(--primary-color);
+button {
+	background: var(--primary-color);
 	color: white;
 	font-weight: bold;
+	padding: 10px 10px;
 	border: none;
-	cursor: pointer;
 	border-radius: 5px;
-	transition: background-color 0.3s ease;
-	width: 100%;
+	cursor: pointer;
 }
 
-.formContainer button:hover {
-	background-color: var(--secondary-color);
+.jobCard {
+	border: 1px solid var(--primary-border);
+	padding: 15px;
+	border-radius: 10px;
+
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.formContainer .error {
-	color: red;
-	font-size: 0.9rem;
-	margin-top: -12px;
-	margin-bottom: 16px;
+.description {
+	height: 300px;
 }
