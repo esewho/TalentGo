@@ -37,6 +37,8 @@ sequelize.models = Object.fromEntries(capsEntries); // Convierte el array de arr
 
 const { Job, Category } = sequelize.models;
 
+
+
 Job.belongsToMany(Category, { through: "job_category" });
 Category.belongsToMany(Job, { through: "job_category" });
 

@@ -30,4 +30,6 @@ body {
 	--primary-shadow: rgba(0, 0, 0, 0.382);
 	--selected-bg: rgba(220, 228, 239, 0.798);
 	--primary-icon: #666666;
+	--primary-input: #444242;
+	--primary-formColor: #322d2dca;
 }

@@ -4,9 +4,11 @@ import { useDispatch, useSelector } from "react-redux"
 import style from "./navBar.module.css"
 import { Link } from "react-router-dom"
 import { setQueryInput } from "../../features/searchSlice"
+import { useNavigate } from "react-router-dom"
 
 export default function NavBar() {
 	const dispatch = useDispatch()
+	const navigate = useNavigate()
 	const queryInput = useSelector((state) => state.search.queryInput)
 
 	function handleChange(event) {
@@ -33,14 +35,14 @@ export default function NavBar() {
 					</button>
 				</div>
 				<div className={style.containerIcons}>
-					<Link to="/createJobs">
+					<button onClick={() => navigate("/createJob")}>
 						<svg width="32" height="32" viewBox="0 0 24 24">
 							<path
 								fill="#666666"
 								d="M17 13h-4v4h-2v-4H7v-2h4V7h2v4h4m2-8H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2"
 							/>
 						</svg>
-					</Link>
+					</button>
 					<Link to="/savedJobs">
 						<svg width="32" height="32" viewBox="0 0 24 24">
 							<path fill="#666666" d="M4 22V6h12v16l-6-3zm14-4V4H7V2h13v16z" />

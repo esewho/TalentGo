@@ -7,12 +7,18 @@ const translateDate = (date) => {
 	const currentDate = new Date()
 	const postedDate = new Date(date)
 
-	const differenceInTime = currentDate - postedDate
-	const differenceInDays = Math.floor(differenceInTime / (1000 * 60 * 60 * 24))
+	// Convertir ambas fechas a solo YYYY-MM-DD (ignorando horas)
+	const currentDateString = currentDate.toISOString().split("T")[0]
+	const postedDateString = postedDate.toISOString().split("T")[0]
 
-	return differenceInDays == 0
-		? "Published today"
-		: differenceInDays == 1
+	if (currentDateString === postedDateString) {
+		return "Posted today" // Si es el mismo día
+	}
+
+	const differenceInTime = currentDate - postedDate
+	const differenceInDays = Math.floor(differenceInTime / (1000 * 60 * 60 * 24))	
+
+	return differenceInDays === 1
 		? "Published 1 day ago"
 		: `Published ${differenceInDays} days ago`
 }
