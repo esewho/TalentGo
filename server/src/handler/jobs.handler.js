@@ -36,7 +36,6 @@ class JobsHandler {
 				title,
 				url,
 				company_name,
-				company_logo,
 				category,
 				job_type,
 				publication_date,
@@ -44,6 +43,8 @@ class JobsHandler {
 				salary,
 				description,
 			} = req.body
+
+			const logoUrl = req.file ? `/uploads/${req.file.filename}` : null
 
 			if (
 				!title ||
@@ -61,7 +62,7 @@ class JobsHandler {
 				title,
 				url,
 				company_name,
-				company_logo,
+				company_logo: logoUrl,
 				category,
 				job_type,
 				publication_date,

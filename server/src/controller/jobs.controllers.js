@@ -17,7 +17,7 @@ class JobsController {
 							},
 							{
 								description: {
-									[Op.iLike]: `%${title.toLowerCase()}%`, // 🔥 Buscar también en la descripción
+									[Op.iLike]: `%${title.toLowerCase()}%`, //  Buscar también en la descripción
 								},
 							},
 						],

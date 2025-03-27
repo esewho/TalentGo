@@ -1,7 +1,7 @@
 import { Route, Routes, useNavigate } from "react-router-dom"
 import "./App.css"
 import LandingPage from "./components/LandingPage/LandingPage"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import LayoutApp from "./layout/LayoutApp"
 import Home from "./components/Home/Home"
 import JobDetail from "./components/jobDetail/JobDetail"

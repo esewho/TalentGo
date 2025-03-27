@@ -1,6 +1,5 @@
 import React from "react"
 import JobList from "../JobList/JobList"
-import JobDetail from "../jobDetail/JobDetail"
 import style from "./home.module.css"
 import { Outlet } from "react-router-dom"
 
