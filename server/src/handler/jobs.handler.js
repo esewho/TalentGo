@@ -1,4 +1,3 @@
-const RemotiveApi = require("../../remotive-api/remotive-api.lib")
 const JobsController = require("../controller/jobs.controllers")
 
 class JobsHandler {
@@ -32,6 +31,8 @@ class JobsHandler {
 
 	static async createJob(req, res) {
 		try {
+			console.log("Request body:", req.body) // 🔍 Ver qué llega
+			console.log("Uploaded file:", req.file) // 🔍 Ver qué llega
 			const {
 				title,
 				url,
@@ -43,8 +44,6 @@ class JobsHandler {
 				salary,
 				description,
 			} = req.body
-
-			const logoUrl = req.file ? `/uploads/${req.file.filename}` : null
 
 			if (
 				!title ||
@@ -62,7 +61,7 @@ class JobsHandler {
 				title,
 				url,
 				company_name,
-				company_logo: logoUrl,
+				company_logo,
 				category,
 				job_type,
 				publication_date,
