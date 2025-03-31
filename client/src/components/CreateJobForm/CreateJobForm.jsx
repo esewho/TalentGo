@@ -46,15 +46,14 @@ export default function CreateJobForm() {
 
 		const data = new FormData()
 		data.append("title", jobData.title)
-		data.append("logoUrl", jobData.logoUrl)
+		data.append("company_logo", jobData.logoUrl)
 		data.append("url", jobData.url)
-		data.append("type", jobData.type)
-		data.append("publication_date", jobData.publication_date)
+		data.append("job_type", jobData.type)
 		data.append("description", jobData.description)
 		data.append("salary", jobData.salary)
 		data.append("category", jobData.category)
-		data.append("company", jobData.company)
-		data.append("location", jobData.location)
+		data.append("company_name", jobData.company)
+		data.append("candidate_required_location", jobData.location)
 
 		try {
 			const response = await axios.post(`http://localhost:3001/jobs`, data, {

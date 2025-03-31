@@ -7,5 +7,6 @@ const JobRouter = Router()
 JobRouter.get("/categories", JobsHandler.categoriesHandler)
 JobRouter.get("/", JobsHandler.getJobs)
 JobRouter.get("/:idJob", JobsHandler.getJobsById)
+JobRouter.post("/", JobsHandler.createJob)
 
 module.exports = JobRouter
