@@ -33,6 +33,8 @@ textarea {
 	border-radius: 5px;
 	background-color: var(--primary-bg);
 	color: var(--primary-text);
+	max-width: 100%;
+	resize: none;
 }
 
 .buttonSubmit {
@@ -59,12 +61,13 @@ textarea {
 	height: 100%;
 	background-color: var(--primary-bg);
 	border-radius: 10px;
+
 	/* overflow-y: scroll;
 	overflow-x: hidden; */
 	padding: 0px 20px;
 	color: var(--primary-text);
 	gap: 20px;
-	background-color: red;
+	background-color: blue;
 }
 
 .conditions {
@@ -76,7 +79,6 @@ textarea {
 	height: auto;
 	width: 100%;
 	padding-top: 20px;
-	background-color: blue;
 }
 
 .conditions h1 {
@@ -167,4 +169,11 @@ textarea {
 	top: 0;
 	border-radius: 10px;
 	box-shadow: 1px 1px 10px 1px var(--primary-shadow);
+}
+
+.containerDescription {
+	display: flex;
+	overflow-x: hidden;
+	max-width: 100%;
+	background-color: red;
 }

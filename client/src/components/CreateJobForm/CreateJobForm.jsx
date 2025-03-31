@@ -3,6 +3,8 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import style from "./createJobForm.module.css"
 import axios from "axios"
+import ReactQuill from "react-quill"
+import "react-quill/dist/quill.snow.css"
 
 const splitSkills = (jobTags = []) => {
 	if (jobTags.length < 3) {
@@ -154,7 +156,19 @@ export default function CreateJobForm() {
 						onChange={handleChange}
 					/>
 					<label>Description</label>
-					<textarea
+
+					<ReactQuill
+						value={jobData.description}
+						onChange={(value) => {
+							console.log(value)
+							setJobData((prev) => {
+								return { ...prev, description: value }
+							})
+						}}
+					/>
+
+					{/* <textarea
+						style={{ whiteSpace: "pre-line" }}
 						className={style.description}
 						type="text"
 						name="description"
@@ -162,7 +176,7 @@ export default function CreateJobForm() {
 						id="description"
 						onChange={handleChange}
 						placeholder="Describe the job here..."
-					/>
+					/> */}
 
 					<button className={style.buttonSubmit} type="submit">
 						Submit
@@ -289,7 +303,15 @@ export default function CreateJobForm() {
 						<button className={style.buttonSave}>Save</button>
 					</div>
 				</div>
+				{console.log(jobData.description)}
 				<div
+					className={style.containerDescription}
+					// style={{
+					// 	whiteSpace: "normal", // Permite que el texto haga saltos de línea
+					// 	wordWrap: "break-word", // Evita que el texto largo desborde
+					// 	overflowWrap: "break-word", // Otra opción para evitar desbordamientos
+					// 	maxWidth: "100%", // Asegura que no sobresalga del contenedor
+					// }}
 					dangerouslySetInnerHTML={{
 						__html: jobData.description,
 					}}
