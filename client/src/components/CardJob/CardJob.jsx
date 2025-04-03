@@ -16,7 +16,7 @@ const translateDate = (date) => {
 	}
 
 	const differenceInTime = currentDate - postedDate
-	const differenceInDays = Math.floor(differenceInTime / (1000 * 60 * 60 * 24))	
+	const differenceInDays = Math.floor(differenceInTime / (1000 * 60 * 60 * 24))
 
 	return differenceInDays === 1
 		? "Published 1 day ago"
@@ -63,7 +63,11 @@ export default function CardJob({ job }) {
 						{job.title}
 					</h3>
 					<h5>{job.company_name}</h5>
-					<h5>{job.candidate_required_location}</h5>
+					<h5>
+						{job.candidate_required_location.length > 30
+							? job.candidate_required_location.slice(0, 20) + "..."
+							: job.candidate_required_location}
+					</h5>
 				</div>
 				<div className={style.dateJob}>
 					<p>{translateDate(job.publication_date)}</p>

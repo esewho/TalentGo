@@ -5,9 +5,8 @@ const updateDatabase = async () => {
 	const response = await RemotiveApi.getJobs({ limit: 1 })
 	const jobs = await RemotiveApi.getJobs({
 		limit: response["total-job-count"],
-	})
-		.then((data) => data.jobs)
-		.catch((error) => console.log(error))
+	}).then((data) => data.jobs)
+	// .catch((error) => console.log(error))
 	// console.log(jobs)
 
 	for (const job of jobs) {

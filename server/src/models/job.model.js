@@ -10,39 +10,40 @@ module.exports = (database) => {
 			defaultValue: DataTypes.UUIDV4,
 		},
 		url: {
-			type: DataTypes.STRING,
+			type: DataTypes.TEXT,
 			allowNull: false,
 			// validate: {
 			//   isUrl: true,
 			// },
 		},
 		title: {
-			type: DataTypes.STRING,
+			type: DataTypes.TEXT,
 			allownull: false,
 			minLength: 3,
 			maxLength: 255,
 		},
 		company_name: {
-			type: DataTypes.STRING,
+			type: DataTypes.TEXT,
 			allowNull: false,
 			unique: false,
 		},
 		company_logo: {
-			type: DataTypes.STRING,
+			type: DataTypes.TEXT,
 			allowNull: true,
-			validate: {
-				isUrl: true,
-			},
+
+			// validate: {
+			// 	isUrl: true,
+			// },
 		},
 		category: {
-			type: DataTypes.STRING,
+			type: DataTypes.TEXT,
 			allowNull: false,
 		},
 		tags: {
-			type: DataTypes.ARRAY(DataTypes.STRING),
+			type: DataTypes.ARRAY(DataTypes.TEXT),
 		},
 		job_type: {
-			type: DataTypes.STRING,
+			type: DataTypes.TEXT,
 			allowNull: false,
 		},
 		publication_date: {
@@ -51,7 +52,7 @@ module.exports = (database) => {
 			defaultValue: DataTypes.NOW,
 		},
 		candidate_required_location: {
-			type: DataTypes.STRING,
+			type: DataTypes.TEXT,
 			allowNull: true,
 		},
 		description: {
@@ -59,7 +60,7 @@ module.exports = (database) => {
 			allowNull: false,
 		},
 		salary: {
-			type: DataTypes.STRING,
+			type: DataTypes.TEXT,
 			allowNull: false,
 		},
 		jobId: {

@@ -9,6 +9,10 @@
 }
 
 .formContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
 	background: var(--secondary-bg);
 	color: var(--primary-text);
 	padding: 20px;
@@ -17,25 +21,63 @@
 	width: 45%;
 	max-height: 90vh;
 	overflow-y: auto;
+	border: 1px solid var(--primary-border);
 }
 
-.formContainer form {
-	display: flex;
-	flex-direction: column;
-	gap: 15px;
-}
-
+/* Asegura que los inputs tengan el mismo tamaño */
 input,
 textarea {
-	width: 90%;
+	width: 100%;
 	padding: 10px;
 	border: 1px solid var(--primary-border);
 	border-radius: 5px;
 	background-color: var(--primary-bg);
 	color: var(--primary-text);
-	max-width: 100%;
 	resize: none;
 }
+
+/* Hacer que el textarea ocupe más espacio */
+textarea {
+	min-height: 100px;
+}
+
+/* Botón de envío estilizado */
+.buttonSubmit {
+	background: var(--primary-color);
+	color: white;
+	font-weight: bold;
+	width: 100px;
+	padding: 10px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.buttonSubmit:hover {
+	background-color: var(--secondary-color);
+}
+
+/* Estilizar las filas específicas */
+.nameAndCategory,
+.typeAndSalary,
+.skillsAndCompany,
+.urlAndLocation {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	align-items: center;
+	width: 100%;
+}
+
+.nameAndCategory label,
+.typeAndSalary label,
+.skillsAndCompany label,
+.urlAndLocation label {
+	display: block;
+	margin-bottom: 5px;
+}
+
+/* Asegura que los labels sean consistentes */
 
 .buttonSubmit {
 	background: var(--primary-color);
@@ -175,6 +217,16 @@ textarea {
 	white-space: pre-wrap; /* Permite saltos de línea y ajusta el texto */
 	word-wrap: break-word; /* Rompe palabras largas */
 	overflow-wrap: break-word; /* Alternativa para navegadores modernos */
-	width: 100%; /* Asegura que el contenedor no crezca demasiado */
+	width: 100%;
+	height: 100%; /* Asegura que el contenedor no crezca demasiado */
 	overflow-x: hidden;
+	/* }
+label {
+	font-weight: bold;
+	margin-bottom: 5px;
+	width: 100%;
+	white-space: nowrap;
+	text-align: left;
+	display: block;
+} */
 }

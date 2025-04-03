@@ -3,6 +3,10 @@ import style from "./jobDetail.module.css"
 import { useParams, useLocation } from "react-router-dom"
 
 const splitSkills = (jobTags = []) => {
+	if (!Array.isArray(jobTags)) {
+		console.log(jobTags)
+		jobTags = []
+	}
 	if (jobTags.length < 3) {
 		return `${jobTags.slice(0, 2).join(", ")}`
 	}
@@ -133,9 +137,18 @@ export default function JobDetail() {
 						</p>
 						{open && (
 							<div className={style.containerSkills}>
-								{job.tags.map((tag) => (
-									<li>{tag}</li>
-								))}
+								<p>Skills: {splitSkills(job.tags)}</p>
+								{open && (
+									<div className={style.containerSkills}>
+										{/* Verifica si job.tags es un array antes de intentar hacer .map() */}
+										{Array.isArray(job.tags) && job.tags.length > 0 ? (
+											job.tags.map((tag, index) => <li key={index}>{tag}</li>)
+										) : (
+											<p>No skills available</p> // O cualquier mensaje alternativo si no hay tags
+										)}
+									</div>
+								)}
+
 								<div
 									onClick={() => setOpen(false)}
 									style={{

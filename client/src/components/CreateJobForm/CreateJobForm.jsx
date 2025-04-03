@@ -46,6 +46,7 @@ export default function CreateJobForm() {
 
 		const data = new FormData()
 		data.append("title", jobData.title)
+		data.append("tags", jobData.tags)
 		data.append("company_logo", jobData.logoUrl)
 		data.append("url", jobData.url)
 		data.append("job_type", jobData.type)
@@ -57,7 +58,7 @@ export default function CreateJobForm() {
 
 		try {
 			const response = await axios.post(`http://localhost:3001/jobs`, data, {
-				headers: { "Content-Type": "multipart/form-data" },
+				headers: { "Content-Type": "application/json" },
 			})
 			const jobId = response.data.id
 			navigate(`/jobs/${jobId}`)
@@ -74,79 +75,91 @@ export default function CreateJobForm() {
 			<div className={style.formContainer}>
 				<h2>Create a new Job</h2>
 				<form onSubmit={handleSubmit}>
-					<label>Job Name</label>
-					<input
-						type="text"
-						name="title"
-						value={jobData.title}
-						id="title"
-						onChange={handleChange}
-						placeholder="Ej: Frontend Developer"
-					/>
-					<label>Category</label>
-					<input
-						type="text"
-						name="category"
-						value={jobData.category}
-						id="category"
-						onChange={handleChange}
-						placeholder="Ej: Marketing"
-					/>
-					<label>Job type</label>
-					<input
-						type="text"
-						name="type"
-						value={jobData.type}
-						id="type"
-						onChange={handleChange}
-						placeholder="Ej: Fulltime"
-					/>
-					<label>Salary</label>
-					<input
-						type="text"
-						name="salary"
-						value={jobData.salary}
-						id="salary"
-						onChange={handleChange}
-						placeholder="Ej: 2500$"
-					/>
-					<label>Skills</label>
-					<input
-						type="text"
-						name="tags"
-						value={jobData.tags}
-						id="tags"
-						onChange={handleChange}
-						placeholder="Ej: Js, Ts, etc"
-					/>
-					<label>URL</label>
-					<input
-						type="text"
-						name="url"
-						value={jobData.url}
-						id="url"
-						onChange={handleChange}
-						placeholder="Ej: google.com"
-					/>
+					<div className={style.nameAndCategory}>
+						<label>Job Name</label>
+						<input
+							type="text"
+							name="title"
+							value={jobData.title}
+							id="title"
+							onChange={handleChange}
+							placeholder="Ej: Frontend Developer"
+						/>
+						<label>Category</label>
+						<input
+							type="text"
+							name="category"
+							value={jobData.category}
+							id="category"
+							onChange={handleChange}
+							placeholder="Ej: Marketing"
+						/>
+					</div>
 
-					<label>Company</label>
-					<input
-						type="text"
-						name="company"
-						value={jobData.company}
-						id="Company"
-						onChange={handleChange}
-						placeholder="Ej: Google"
-					/>
-					<label>Location</label>
-					<input
-						type="text"
-						name="location"
-						value={jobData.location}
-						id="location"
-						onChange={handleChange}
-						placeholder="Ej: USA"
-					/>
+					<div className={style.typeAndSalary}>
+						<label>Job type</label>
+						<input
+							type="text"
+							name="type"
+							value={jobData.type}
+							id="type"
+							onChange={handleChange}
+							placeholder="Ej: Fulltime"
+						/>
+						<label>Salary</label>
+						<input
+							type="text"
+							name="salary"
+							value={jobData.salary}
+							id="salary"
+							onChange={handleChange}
+							placeholder="Ej: 2500$"
+						/>
+					</div>
+
+					<div className={style.skillsAndCompany}>
+						<label>Skills</label>
+						<input
+							type="text"
+							name="tags"
+							value={jobData.tags}
+							id="tags"
+							onChange={handleChange}
+							placeholder="Ej: Js, Ts, etc"
+						/>
+						<label>Company</label>
+						<input
+							type="text"
+							name="company"
+							value={jobData.company}
+							id="Company"
+							onChange={handleChange}
+							placeholder="Ej: Google"
+						/>
+					</div>
+
+					<div className={style.urlAndLocation}>
+						<label>URL</label>
+						<input
+							type="text"
+							name="url"
+							value={jobData.url}
+							id="url"
+							onChange={handleChange}
+							placeholder="Ej: google.com"
+						/>
+
+						<label>Location</label>
+						<input
+							type="text"
+							name="location"
+							value={jobData.location}
+							id="location"
+							onChange={handleChange}
+							placeholder="Ej: USA"
+						/>
+					</div>
+
 					<label>Logo</label>
 					<input
 						type="text"
@@ -263,7 +276,7 @@ export default function CreateJobForm() {
 									textDecorationLine: "underline",
 								}}
 							>
-								Skills: {splitSkills(jobData.tags.split(","))}
+								{splitSkills(jobData.tags.split(","))}
 							</p>
 							{isOpen && (
 								<div className={style.containerSkills}>
@@ -302,7 +315,7 @@ export default function CreateJobForm() {
 						<button className={style.buttonSave}>Save</button>
 					</div>
 				</div>
-				{console.log(jobData.description)}
+
 				<div
 					className={style.containerDescription}
 					// style={{

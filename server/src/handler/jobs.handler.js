@@ -31,8 +31,6 @@ class JobsHandler {
 
 	static async createJob(req, res) {
 		try {
-			console.log("Request body:", req.body) // 🔍 Ver qué llega
-			console.log("Uploaded file:", req.file) // 🔍 Ver qué llega
 			const {
 				title,
 				url,
@@ -43,8 +41,15 @@ class JobsHandler {
 				candidate_required_location,
 				salary,
 				description,
+				company_logo,
 			} = req.body
 
+			let { tags } = req.body
+			tags = tags.split(", ")
+			console.log(
+				tags,
+				"===================================================>>>>>>>>>>>>>>>>>>>"
+			)
 			if (
 				!title ||
 				!company_name ||
@@ -68,6 +73,7 @@ class JobsHandler {
 				candidate_required_location,
 				salary,
 				description,
+				tags,
 			})
 			if (newJob) {
 				return res.status(200).json(newJob)
