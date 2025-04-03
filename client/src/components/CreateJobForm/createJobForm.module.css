@@ -20,6 +20,7 @@
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 	width: 45%;
 	max-height: 90vh;
+
 	overflow-y: auto;
 	border: 1px solid var(--primary-border);
 }

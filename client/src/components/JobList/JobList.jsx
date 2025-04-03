@@ -3,9 +3,12 @@ import style from "./jobList.module.css"
 import CardJob from "../CardJob/CardJob"
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
+import JobFilter from "../jobFilter/JobFilter"
 
 export default function JobList() {
 	const [jobs, setJobs] = useState([])
+
+	const [filteredJobs, setFilteredJobs] = useState([])
 
 	const [countJob, setCountJob] = useState(0)
 
@@ -39,13 +42,23 @@ export default function JobList() {
 			.then((data) => {
 				setJobs(data.rows)
 				setCountJob(data.count)
+				setFilteredJobs(filteredJobs)
 			})
 			.catch((error) => console.log("Error al obtener los trabajos", error))
 			.finally(() => setLoading(false))
 	}, [queryInput, page])
 
+	const handleFilterChange = (filters) => {
+		const filteredJobs = jobs.filter((job) => {
+			filters.salary === "" || job.salary === filters.salary
+			console.log(filters.salary)
+		})
+		setFilteredJobs(filteredJobs)
+	}
+
 	return (
 		<div className={style.container}>
+			<JobFilter onFilterChange={handleFilterChange} />
 			{!loading ? (
 				<div className={style.containerCards}>
 					{jobs.map((job) => (

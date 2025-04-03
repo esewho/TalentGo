@@ -10,6 +10,7 @@
 	padding: 0px 20px;
 	color: var(--primary-text);
 	gap: 20px;
+	max-width: 100%;
 }
 
 .conditions {
@@ -21,6 +22,7 @@
 	height: auto;
 	width: 100%;
 	padding-top: 20px;
+	max-width: 100%;
 }
 
 .conditions h1 {
@@ -106,9 +108,16 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: start;
-	right: -220px;
+	right: -100px;
 	padding: 10px 20px;
 	top: 0;
+
 	border-radius: 10px;
 	box-shadow: 1px 1px 10px 1px var(--primary-shadow);
+}
+.containerSkills li {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
 }
