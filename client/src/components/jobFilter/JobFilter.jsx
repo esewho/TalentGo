@@ -1,33 +1,52 @@
-import React, { useState } from "react"
 import style from "./jobFilter.module.css"
 
-export default function JobFilter({ onFilterChange }) {
-	const [filters, setFilters] = useState({
-		salary: "",
-		location: "",
-		tags: "",
-	})
-
+export default function JobFilter({
+	onFilterChange,
+	categories,
+	filters,
+	setFilters,
+	location,
+}) {
 	const handleChange = (e) => {
 		const { name, value } = e.target
 		const newFilters = { ...filters, [name]: value }
 		setFilters(newFilters)
 		onFilterChange(newFilters)
 	}
+
 	return (
-		<div className={style.filterContainer}>
-			<div>
+		<div className={style.customSelect}>
+			<div className={style.select}>
 				<select
-					name="salary"
-					id="salary"
-					value={filters.salary}
+					name="category"
+					id="category"
+					value={filters.category}
 					onChange={handleChange}
 				>
-					<option value="">All salaries</option>
-					<option value="0$ - 1500$">0$ - 1500$</option>
-					<option value="1500$ - 3000$">1500$ - 3000$</option>
-					<option value="3000$ - 4500$">3000$ - 4500$</option>
-					<option value="+5000$">+5000$</option>
+					<option value="">All categories</option>
+					{categories.map((category) => (
+						<option value={category.name} key={category.id}>
+							{category.name}
+						</option>
+					))}
+				</select>
+			</div>
+
+			<div className={style.select}>
+				<select
+					name="location"
+					id="location"
+					value={filters.location}
+					onChange={handleChange}
+				>
+					<option value="">All locations</option>
+
+					{Array.isArray(location) &&
+						location.map((loc) => (
+							<option value={loc.candidate_required_location} key={loc.id}>
+								{loc.candidate_required_location}
+							</option>
+						))}
 				</select>
 			</div>
 		</div>

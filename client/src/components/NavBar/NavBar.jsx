@@ -35,7 +35,7 @@ export default function NavBar() {
 					</button>
 				</div>
 				<div className={style.containerIcons}>
-					<button onClick={() => navigate("/createJob")}>
+					<button onClick={() => navigate("/home/createJobs")}>
 						<svg width="32" height="32" viewBox="0 0 24 24">
 							<path
 								fill="#666666"

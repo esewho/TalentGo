@@ -1,17 +1,29 @@
 .mainContainer {
 	display: flex;
 	justify-content: center;
+	height: 92%;
+	width: 100%;
+	overflow-y: auto;
+}
+section {
+	background-color: var(--primary-bg);
+	width: 80%;
+	height: 100%;
+	display: flex;
+	display: flex;
+	justify-content: center;
 	align-items: flex-start;
 	gap: 30px;
 	padding: 20px;
-	height: 100vh;
-	background-color: var(--primary-bg);
+	height: 100%;
+
+	overflow-x: none;
 }
 
 .formContainer {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: flex-start;
 	background: var(--secondary-bg);
 	color: var(--primary-text);
@@ -19,15 +31,21 @@
 	border-radius: 10px;
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 	width: 45%;
-	max-height: 90vh;
-
+	height: 95%;
+	overflow-x: none;
+	overflow-x: hidden;
 	overflow-y: auto;
 	border: 1px solid var(--primary-border);
 }
 
-/* Asegura que los inputs tengan el mismo tamaño */
-input,
-textarea {
+.formContainer form {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+input {
 	width: 100%;
 	padding: 10px;
 	border: 1px solid var(--primary-border);
@@ -37,12 +55,12 @@ textarea {
 	resize: none;
 }
 
-/* Hacer que el textarea ocupe más espacio */
-textarea {
-	min-height: 100px;
+.quill {
+	background-color: var(--primary-bg);
+	border-radius: 10px;
+	min-height: 200px;
 }
 
-/* Botón de envío estilizado */
 .buttonSubmit {
 	background: var(--primary-color);
 	color: white;
@@ -53,43 +71,11 @@ textarea {
 	border-radius: 5px;
 	cursor: pointer;
 	transition: all 0.3s ease;
+	margin-top: 60px;
 }
 
 .buttonSubmit:hover {
 	background-color: var(--secondary-color);
-}
-
-/* Estilizar las filas específicas */
-.nameAndCategory,
-.typeAndSalary,
-.skillsAndCompany,
-.urlAndLocation {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	align-items: center;
-	width: 100%;
-}
-
-.nameAndCategory label,
-.typeAndSalary label,
-.skillsAndCompany label,
-.urlAndLocation label {
-	display: block;
-	margin-bottom: 5px;
-}
-
-/* Asegura que los labels sean consistentes */
-
-.buttonSubmit {
-	background: var(--primary-color);
-	color: white;
-	font-weight: bold;
-	max-width: 100px;
-	padding: 10px 10px;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-	transition: all 0.3s ease;
 }
 
 .buttonSubmit:hover {
@@ -99,18 +85,15 @@ textarea {
 .jobDetail {
 	display: flex;
 	flex-direction: column;
-
 	align-items: center;
 	width: 50%;
 	height: 100%;
 	background-color: var(--primary-bg);
 	border-radius: 10px;
-
-	/* overflow-y: scroll;
-	overflow-x: hidden; */
 	padding: 0px 20px;
 	color: var(--primary-text);
 	gap: 20px;
+	overflow-x: hidden;
 }
 
 .conditions {
@@ -122,6 +105,7 @@ textarea {
 	height: auto;
 	width: 100%;
 	padding-top: 20px;
+	overflow-x: none;
 }
 
 .conditions h1 {
@@ -142,6 +126,7 @@ textarea {
 	width: max-content;
 	color: var(--primary-text);
 }
+
 .containerLogo img {
 	width: 48px;
 	height: 48px;
@@ -158,7 +143,6 @@ textarea {
 	display: flex;
 	flex-direction: column;
 	justify-items: baseline;
-	background-color: red;
 }
 
 .containerButtons {
@@ -215,19 +199,29 @@ textarea {
 }
 
 .containerDescription {
-	white-space: pre-wrap; /* Permite saltos de línea y ajusta el texto */
-	word-wrap: break-word; /* Rompe palabras largas */
-	overflow-wrap: break-word; /* Alternativa para navegadores modernos */
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
 	width: 100%;
-	height: 100%; /* Asegura que el contenedor no crezca demasiado */
+	height: 100%;
 	overflow-x: hidden;
-	/* }
-label {
-	font-weight: bold;
-	margin-bottom: 5px;
-	width: 100%;
-	white-space: nowrap;
-	text-align: left;
-	display: block;
-} */
+}
+
+.nameAndCategory,
+.typeAndSalary,
+.skillsAndCompany,
+.urlAndLocation {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding-right: 20px;
+}
+
+.labelAndInput {
+	display: flex;
+	flex-direction: column;
+}
+
+.logoInput {
+	width: 97%;
 }

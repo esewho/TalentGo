@@ -9,6 +9,7 @@ export default function LayoutApp() {
 	return (
 		<div className={style.layoutApp}>
 			<NavBar />
+			
 	
 
 			<Outlet />

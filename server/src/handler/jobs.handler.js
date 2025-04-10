@@ -4,13 +4,28 @@ class JobsHandler {
 	constructor() {}
 	static async getJobs(req, res) {
 		try {
-			const { title, offset } = req.query
+			const { title, offset, category, location } = req.query
 
-			const jobs = await JobsController.getJobs({ title, offset })
+			const jobs = await JobsController.getJobs({
+				title,
+				offset,
+				category,
+				location,
+			})
 			return res.status(200).json(jobs)
 		} catch (error) {
 			console.log(error)
 			return res.status(400).json({ error: error.message })
+		}
+	}
+
+	static async getLocations(req, res) {
+		try {
+			const locations = await JobsController.getLocations()
+			res.status(200).json(locations)
+		} catch (error) {
+			console.log("Error en el handler de locations", error)
+			res.status(500).json({ error: error.message })
 		}
 	}
 

@@ -1,11 +1,11 @@
 const { Op } = require("sequelize")
-
 const { Job } = require("../common/config/db")
 const { Category } = require("../common/config/db")
 
 class JobsController {
-	static async getJobs({ offset = 0, title }) {
+	static async getJobs({ offset = 0, title, category, location }) {
 		try {
+			console.log(location)
 			const jobsFromDb = await Job.findAndCountAll({
 				where: {
 					...(title && {
@@ -22,6 +22,17 @@ class JobsController {
 							},
 						],
 					}),
+					...(category && {
+						category: {
+							[Op.iLike]: `%${category.toLowerCase()}%`,
+						},
+					}),
+
+					...(location && {
+						candidate_required_location: {
+							[Op.iLike]: `%${location.toLowerCase()}%`,
+						},
+					}),
 				},
 				include: {
 					model: Category,
@@ -32,7 +43,6 @@ class JobsController {
 
 				limit: 9,
 			})
-			console.log(jobsFromDb)
 
 			return jobsFromDb
 		} catch (error) {
@@ -75,15 +85,23 @@ class JobsController {
 
 	static async getCategories() {
 		try {
-			const categories = await RemotiveApi.getCategories()
-
-			for (const name of categories) {
-				await Category.findOrCreate({ where: { name: name } })
-			}
 			const allCategories = await Category.findAll({})
 			return allCategories
 		} catch (error) {
 			throw new Error("Error al manejar categorías" + error.message)
+		}
+	}
+
+	static async getLocations() {
+		try {
+			const allLocations = await Job.findAll({
+				attributes: ["candidate_required_location"],
+				group: ["candidate_required_location"],
+				raw: true,
+			})
+			return allLocations
+		} catch (error) {
+			console.log({ error: error.message })
 		}
 	}
 }

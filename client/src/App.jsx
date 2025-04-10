@@ -16,11 +16,11 @@ function App() {
 	return (
 		<Routes>
 			<Route path="/home" element={<LayoutApp />}>
+				<Route path="/home/createJobs" element={<CreateJobForm />}></Route>
 				<Route path="/home" element={<Home />}>
 					<Route path="/home/:jobId" element={<JobDetail />} />
 				</Route>
 			</Route>
-			<Route path="/createJob" element={<CreateJobForm />}></Route>
 
 			<Route path="/landing" element={<LandingPage />} />
 		</Routes>
