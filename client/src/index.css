@@ -33,3 +33,10 @@ body {
 	--primary-input: #444242;
 	--primary-formColor: #322d2dca;
 }
+
+.ql-container {
+	height: auto !important;
+	border-bottom-left-radius: 10px !important;
+	border-bottom-right-radius: 10px !important;
+	min-height: 60px !important;
+}

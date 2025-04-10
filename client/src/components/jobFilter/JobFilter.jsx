@@ -44,7 +44,9 @@ export default function JobFilter({
 					{Array.isArray(location) &&
 						location.map((loc) => (
 							<option value={loc.candidate_required_location} key={loc.id}>
-								{loc.candidate_required_location}
+								{loc.candidate_required_location.length > 33
+									? loc.candidate_required_location.slice(0, 33) + "..."
+									: loc.candidate_required_location}
 							</option>
 						))}
 				</select>

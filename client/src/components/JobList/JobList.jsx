@@ -65,7 +65,7 @@ export default function JobList() {
 
 	useEffect(() => {
 		setPage(0)
-	}, [queryInput])
+	}, [queryInput, filters])
 
 	useEffect(() => {
 		setLoading(true)
