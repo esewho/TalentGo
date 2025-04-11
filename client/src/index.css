@@ -35,8 +35,8 @@ body {
 }
 
 .ql-container {
-	height: auto !important;
+	height: 137px !important;
 	border-bottom-left-radius: 10px !important;
 	border-bottom-right-radius: 10px !important;
-	min-height: 60px !important;
+	min-height: 100px !important;
 }

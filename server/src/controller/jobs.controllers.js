@@ -5,8 +5,8 @@ const { Category } = require("../common/config/db")
 class JobsController {
 	static async getJobs({ offset = 0, title, category, location }) {
 		try {
-			console.log(location)
 			const jobsFromDb = await Job.findAndCountAll({
+				order: [["publication_date", "DESC"]],
 				where: {
 					...(title && {
 						[Op.or]: [

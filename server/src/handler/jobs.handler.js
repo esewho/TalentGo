@@ -61,10 +61,7 @@ class JobsHandler {
 
 			let { tags } = req.body
 			tags = tags.split(", ")
-			console.log(
-				tags,
-				"===================================================>>>>>>>>>>>>>>>>>>>"
-			)
+
 			if (
 				!title ||
 				!company_name ||

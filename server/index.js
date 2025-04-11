@@ -4,7 +4,7 @@ const { updateDatabase } = require("./src/services/jobs.service")
 const PORT = process.env.PORT || 3001
 
 conn
-	.sync({ force: true }) // Sincronizamos los modelos con la base de datos
+	.sync({ force: false }) // Sincronizamos los modelos con la base de datos
 	.then(() => {
 		updateDatabase()
 		server.listen(PORT, () => {

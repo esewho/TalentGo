@@ -9,6 +9,7 @@
 	background-color: var(--primary-bg);
 	color: var(--primary-text);
 	overflow-x: hidden;
+
 	justify-content: space-between; /* 🔥 Mantiene el paginado abajo */
 }
 
