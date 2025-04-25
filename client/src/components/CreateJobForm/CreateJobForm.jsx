@@ -225,6 +225,7 @@ export default function CreateJobForm() {
 				<div className={style.jobDetail}>
 					<div className={style.conditions}>
 						<div className={style.containerLogo}>
+							{console.log(jobData.logoUrl)}
 							{jobData.logoUrl && validateUrl(jobData.logoUrl) ? (
 								<img src={jobData.logoUrl} alt="company_logo" />
 							) : (
