@@ -6,7 +6,7 @@ import LayoutApp from "./layout/LayoutApp"
 import Home from "./components/Home/Home"
 import JobDetail from "./components/jobDetail/JobDetail"
 import CreateJobForm from "./components/createJobForm/createJobForm"
-
+import SavedJobs from "./components/SavedJobs/savedJobs"
 function App() {
 	const navigate = useNavigate()
 	useEffect(() => {
@@ -16,9 +16,10 @@ function App() {
 	return (
 		<Routes>
 			<Route path="/home" element={<LayoutApp />}>
-				<Route path="/home/createJobs" element={<CreateJobForm />}></Route>
-				<Route path="/home" element={<Home />}>
-					<Route path="/home/:jobId" element={<JobDetail />} />
+				<Route path="createJobs" element={<CreateJobForm />}></Route>
+				<Route path="savedJobs" element={<SavedJobs />}></Route>
+				<Route path="" element={<Home />}>
+					<Route path=":jobId" element={<JobDetail />} />
 				</Route>
 			</Route>
 

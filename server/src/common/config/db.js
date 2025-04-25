@@ -35,10 +35,20 @@ let capsEntries = entries.map((entry) => [
 ])
 sequelize.models = Object.fromEntries(capsEntries) // Convierte el array de arrays en un objeto
 
-const { Job, Category } = sequelize.models
+const { Job, Category, User } = sequelize.models
 
 Job.belongsToMany(Category, { through: "job_category" })
 Category.belongsToMany(Job, { through: "job_category" })
+User.belongsToMany(Job, {
+	through: "saved_jobs",
+	as: "savedJobs",
+	foreignKey: "userId",
+})
+Job.belongsToMany(User, {
+	through: "saved_jobs",
+	as: "savedJobs",
+	foreignKey: "jobId",
+})
 
 // Aca vendrian las relaciones !@IMPORTANT Definir las relaciones
 

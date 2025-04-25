@@ -47,7 +47,22 @@ export default function CardJob({ job }) {
 			}
 		>
 			<div className={style.card}>
-				<img src={job.company_logo} alt={job.company} className={style.logo} />
+				{/* <img src={job.company_logo} alt={job.company} className={style.logo} /> */}
+
+				{job.company_logo && job.company_logo.trim() !== "" ? (
+					<img
+						className={style.logo}
+						src={job.company_logo}
+						alt={job.company}
+					/>
+				) : (
+					<svg width="48" height="48" viewBox="0 0 24 24">
+						<path
+							fill="#0284c7"
+							d="M21 7h-6a1 1 0 0 0-1 1v3h-2V4a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1M8 6h2v2H8zM6 16H4v-2h2zm0-4H4v-2h2zm0-4H4V6h2zm4 8H8v-2h2zm0-4H8v-2h2zm9 4h-2v-2h2zm0-4h-2v-2h2z"
+						/>
+					</svg>
+				)}
 
 				<div className={style.cardContent}>
 					<h3

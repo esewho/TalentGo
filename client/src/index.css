@@ -40,3 +40,32 @@ body {
 	border-bottom-right-radius: 10px !important;
 	min-height: 100px !important;
 }
+
+.scrollbarCustom {
+	/* Scrollbar global para WebKit (Chrome, Edge, Safari) */
+	::-webkit-scrollbar {
+		width: 10px;
+		height: 10px;
+	}
+
+	::-webkit-scrollbar-track {
+		background: #f1f1f1; /* Fondo del track */
+		border-radius: 8px;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: #65a30d; /* Verde TalentGo */
+		border-radius: 8px;
+		transition: background 0.3s ease;
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+		background: #4d7c0f; /* Más oscuro al hover */
+	}
+
+	/* Firefox (scrollbar minimal) */
+	* {
+		scrollbar-width: thin;
+		scrollbar-color: #65a30d #f1f1f1;
+	}
+}

@@ -43,11 +43,11 @@ export default function NavBar() {
 							/>
 						</svg>
 					</button>
-					<Link to="/savedJobs">
+					<button onClick={() => navigate("/home/savedJobs")}>
 						<svg width="32" height="32" viewBox="0 0 24 24">
 							<path fill="#666666" d="M4 22V6h12v16l-6-3zm14-4V4H7V2h13v16z" />
 						</svg>
-					</Link>
+					</button>
 					<Link to="/Applied Jobs">
 						<svg width="32" height="32" viewBox="0 0 24 24">
 							<path
