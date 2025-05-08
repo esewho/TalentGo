@@ -4,21 +4,24 @@ class UserHandler {
 	constructor() {}
 	static async saveJobToUserHandler(req, res) {
 		try {
-			const { userId, jobId } = req.params
-			const message = await UserController.saveJobToUser(userId, jobId)
+			const { annonId, jobId } = req.params
+			const message = await UserController.saveJobToUser(annonId, jobId)
 
 			return res.status(200).json(message)
 		} catch (error) {
+			console.log(error)
 			return res.status(500).json({ error: error.message })
 		}
 	}
 
 	static async getJobFromUserHandler(req, res) {
 		try {
-			const { userId } = req.params
-			const savedJobs = await UserController.getJobsFromUser(userId)
+			const { annonId } = req.params
+			const { offset } = req.query
+			const savedJobs = await UserController.getJobsFromUser(annonId, offset)
 			return res.status(200).json(savedJobs)
 		} catch (error) {
+			console.error(error)
 			return res.status(500).json({ error: error.message })
 		}
 	}
@@ -30,6 +33,16 @@ class UserHandler {
 			return res.status(200).json(message)
 		} catch (error) {
 			return res.status(500).json({ error: message.error })
+		}
+	}
+
+	static async createAnonymousUserHandler(req, res) {
+		try {
+			const { annonId } = req.params
+			const message = await UserController.createUser(annonId)
+			return res.status(200).json(message)
+		} catch (error) {
+			return res.status(500).json({ error: error.message })
 		}
 	}
 }

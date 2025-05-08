@@ -1,7 +1,6 @@
 import React from "react"
 import style from "./cardJob.module.css"
-import { useNavigate } from "react-router-dom"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 
 const translateDate = (date) => {
 	const currentDate = new Date()
@@ -23,13 +22,15 @@ const translateDate = (date) => {
 		: `Published ${differenceInDays} days ago`
 }
 
-export default function CardJob({ job }) {
+export default function CardJob({ job, pathNavigate = "home" }) {
 	const { jobId: selectedJobId } = useParams()
 
 	const navigate = useNavigate()
 
 	function handlerJobDetail() {
-		navigate(`/home/${job.id}`, { state: { companyName: job.company_name } })
+		navigate(`/${pathNavigate}/${job.id}`, {
+			state: { companyName: job.company_name },
+		})
 	}
 
 	const isSelected = selectedJobId == job.id

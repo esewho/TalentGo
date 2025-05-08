@@ -22,6 +22,7 @@ function validateUrl(url) {
 			"(\\#[-a-zA-Z\\d_]*)?$", // fragmento opcional
 		"i"
 	)
+	console.log(!!pattern.test(url))
 	return !!pattern.test(url)
 }
 
@@ -77,7 +78,7 @@ export default function CreateJobForm() {
 			})
 			const jobId = response.data.id
 			navigate(`/jobs/${jobId}`)
-			console.log("Job created: ", response.data)
+			// console.log("Job created: ", response.data)
 			alert("Succesfully created!")
 		} catch (error) {
 			console.error("Failed to create", error)
@@ -225,7 +226,6 @@ export default function CreateJobForm() {
 				<div className={style.jobDetail}>
 					<div className={style.conditions}>
 						<div className={style.containerLogo}>
-							{console.log(jobData.logoUrl)}
 							{jobData.logoUrl && validateUrl(jobData.logoUrl) ? (
 								<img src={jobData.logoUrl} alt="company_logo" />
 							) : (

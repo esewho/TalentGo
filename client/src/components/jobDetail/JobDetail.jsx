@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useRef } from "react"
 import style from "./jobDetail.module.css"
 import { useParams, useLocation } from "react-router-dom"
+import { getAnonId } from "../../../utils/anonId"
 
 const splitSkills = (jobTags = []) => {
 	if (!Array.isArray(jobTags)) {
-		console.log(jobTags)
 		jobTags = []
 	}
 	if (jobTags.length < 3) {
@@ -36,6 +36,26 @@ export default function JobDetail() {
 
 	const handlerApplyJob = () => {
 		window.open(`${job.url}`, "_blank")
+	}
+
+	const handleSave = async () => {
+		const anonId = getAnonId()
+		try {
+			const res = await fetch(
+				`http://localhost:3001/users/${anonId}/savedJobs/${jobId}`,
+				{
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({ jobId: jobId }),
+				}
+			)
+			if (!res.ok) throw new Error("Failed to save")
+			if (res.ok) {
+				alert("Job saved!")
+			}
+		} catch (error) {
+			console.error("Error saving the job", error)
+		}
 	}
 
 	const location = useLocation()
@@ -260,7 +280,9 @@ export default function JobDetail() {
 					<button onClick={handlerApplyJob} className={style.buttonApply}>
 						Apply for job
 					</button>
-					<button className={style.buttonSave}>Save</button>
+					<button onClick={handleSave} className={style.buttonSave}>
+						Save
+					</button>
 				</div>
 			</div>
 			<div

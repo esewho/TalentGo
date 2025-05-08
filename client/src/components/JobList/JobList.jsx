@@ -47,7 +47,6 @@ export default function JobList() {
 			})
 			.then((data) => {
 				setCategories(data)
-				console.log(data)
 			})
 	}, [])
 

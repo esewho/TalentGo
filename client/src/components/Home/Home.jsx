@@ -6,7 +6,7 @@ import { Outlet } from "react-router-dom"
 export default function Home() {
 	return (
 		<div className={style.defaultContainer}>
-			<section>
+			<section className={style.section}>
 				<div className={style.container}>
 					<JobList />
 					<Outlet />

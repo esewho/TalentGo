@@ -4,10 +4,11 @@ const UserHandler = require("../handler/user.handler")
 
 const UserRouter = Router()
 
-UserRouter.get("/:userId/savedJobs", UserHandler.getJobFromUserHandler)
-UserRouter.post("/:userId/savedJobs/:jobId", UserHandler.saveJobToUserHandler)
+UserRouter.post("/:annonId", UserHandler.createAnonymousUserHandler)
+UserRouter.get("/:annonId/savedJobs", UserHandler.getJobFromUserHandler)
+UserRouter.post("/:annonId/savedJobs/:jobId", UserHandler.saveJobToUserHandler)
 UserRouter.delete(
-	"/:userId/savedJobs/:jobId",
+	"/:annonId/savedJobs/:jobId",
 	UserHandler.removeJobsFromUserHandler
 )
 
