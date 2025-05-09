@@ -17,6 +17,8 @@
 .container_savedJobs {
 	display: flex;
 	flex-direction: row;
+	justify-content: flex-start;
+	gap: 0px;
 	height: 100%;
 	width: 100%;
 	background-color: var(--primary-bg);

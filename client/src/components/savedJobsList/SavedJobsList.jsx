@@ -4,7 +4,7 @@ import CardJob from "../CardJob/CardJob"
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 
-import { getAnonId } from "../../../utils/anonId"
+import { getAnnonId } from "../../../utils/annonId"
 
 export default function SavedJobList() {
 	const [jobs, setJobs] = useState([])
@@ -29,7 +29,7 @@ export default function SavedJobList() {
 
 	const [loading, setLoading] = useState(true)
 
-	const anonId = getAnonId()
+	const annonId = getAnnonId()
 
 	useEffect(() => {
 		setPage(0)
@@ -37,7 +37,9 @@ export default function SavedJobList() {
 
 	useEffect(() => {
 		setLoading(true)
-		fetch(`http://localhost:3001/users/${anonId}/savedJobs?offset=${page * 9}`)
+		fetch(
+			`http://172.20.10.3:3001/users/${annonId}/savedJobs?offset=${page * 9}`
+		)
 			.then((response) => response.json())
 			.then((data) => {
 				setJobs(data.rows || [])
@@ -48,8 +50,8 @@ export default function SavedJobList() {
 				console.log("Error al obtener los trabajos guardados", error)
 			)
 			.finally(() => setLoading(false))
-	}, [page, anonId])
-	console.log(anonId)
+	}, [page, annonId])
+	console.log(annonId)
 
 	return (
 		<div className={style.container}>

@@ -1,5 +1,6 @@
 const { Op } = require("sequelize")
 const { Job } = require("../common/config/db")
+const { User } = require("../common/config/db")
 const { Category } = require("../common/config/db")
 
 class JobsController {
@@ -50,7 +51,7 @@ class JobsController {
 		}
 	}
 
-	static async getJobsById(idJob) {
+	static async getJobsById(idJob, annonId) {
 		try {
 			const jobFromDb = await Job.findOne({
 				where: { id: idJob },
@@ -62,6 +63,17 @@ class JobsController {
 			})
 			if (jobFromDb) {
 				return jobFromDb
+			}
+			if (annonId) {
+				const user = await User.findOne({
+					where: { annonId },
+				})
+				if (user) {
+					const saved = await user.hasSavedJobs(jobFromDb)
+					jobFromDb.dataValues.isSaved = saved
+				} else {
+					jobFromDb.dataValues.isSaved = false
+				}
 			}
 		} catch (error) {
 			throw new Error(

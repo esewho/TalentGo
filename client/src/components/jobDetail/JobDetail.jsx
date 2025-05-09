@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useRef } from "react"
 import style from "./jobDetail.module.css"
 import { useParams, useLocation } from "react-router-dom"
-import { getAnonId } from "../../../utils/anonId"
+import { getAnnonId } from "../../../utils/annonId"
+import toast from "react-hot-toast"
 
 const splitSkills = (jobTags = []) => {
 	if (!Array.isArray(jobTags)) {
@@ -39,10 +40,10 @@ export default function JobDetail() {
 	}
 
 	const handleSave = async () => {
-		const anonId = getAnonId()
+		const annonId = getAnnonId()
 		try {
 			const res = await fetch(
-				`http://localhost:3001/users/${anonId}/savedJobs/${jobId}`,
+				`http://172.20.10.3:3001/users/${annonId}/savedJobs/${jobId}`,
 				{
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
@@ -51,7 +52,7 @@ export default function JobDetail() {
 			)
 			if (!res.ok) throw new Error("Failed to save")
 			if (res.ok) {
-				alert("Job saved!")
+				toast.success("Saved successfully!")
 			}
 		} catch (error) {
 			console.error("Error saving the job", error)
@@ -63,8 +64,9 @@ export default function JobDetail() {
 	const { companyName } = location.state || {}
 
 	const fetchJobDetail = async () => {
+		const annonId = getAnnonId()
 		const response = await fetch(
-			`http://localhost:3001/jobs/${jobId}?company_name=${companyName}`
+			`http://172.20.10.3:3001/jobs/${jobId}?annonId=${annonId}`
 		).then((data) => data.json())
 		setJob(response)
 		console.log(response)

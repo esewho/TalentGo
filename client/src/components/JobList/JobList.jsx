@@ -41,7 +41,7 @@ export default function JobList() {
 	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
-		fetch(`http://localhost:3001/jobs/categories`)
+		fetch(`http://172.20.10.3:3001/jobs/categories`)
 			.then((response) => {
 				return response.json()
 			})
@@ -51,7 +51,7 @@ export default function JobList() {
 	}, [])
 
 	useEffect(() => {
-		fetch(`http://localhost:3001/jobs/locations`)
+		fetch(`http://172.20.10.3:3001/jobs/locations`)
 			.then((response) => {
 				return response.json()
 			})
@@ -69,7 +69,7 @@ export default function JobList() {
 	useEffect(() => {
 		setLoading(true)
 		fetch(
-			`http://localhost:3001/jobs?title=${queryInput}&offset=${
+			`http://172.20.10.3:3001/jobs?title=${queryInput}&offset=${
 				page * 9
 			}&category=${filters.category}&location=${filters.location}`
 		)

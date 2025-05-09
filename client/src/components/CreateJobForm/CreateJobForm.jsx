@@ -5,6 +5,7 @@ import style from "./createJobForm.module.css"
 import axios from "axios"
 import ReactQuill from "react-quill"
 import "react-quill/dist/quill.snow.css"
+import toast from "react-hot-toast"
 
 const splitSkills = (jobTags = []) => {
 	if (jobTags.length < 3) {
@@ -79,7 +80,7 @@ export default function CreateJobForm() {
 			const jobId = response.data.id
 			navigate(`/jobs/${jobId}`)
 			// console.log("Job created: ", response.data)
-			alert("Succesfully created!")
+			toast.success("Succesfully created!")
 		} catch (error) {
 			console.error("Failed to create", error)
 			alert("Something went bad")

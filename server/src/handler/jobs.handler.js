@@ -32,8 +32,9 @@ class JobsHandler {
 	static async getJobsById(req, res) {
 		try {
 			const { idJob } = req.params
+			const { annonId } = req.query
 
-			const job = await JobsController.getJobsById(idJob)
+			const job = await JobsController.getJobsById(idJob, annonId)
 			if (job) {
 				return res.status(200).json(job)
 			} else {
