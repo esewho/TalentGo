@@ -37,9 +37,7 @@ export default function SavedJobList() {
 
 	useEffect(() => {
 		setLoading(true)
-		fetch(
-			`http://172.20.10.3:3001/users/${annonId}/savedJobs?offset=${page * 9}`
-		)
+		fetch(`http://localhost:3001/users/${annonId}/savedJobs?offset=${page * 9}`)
 			.then((response) => response.json())
 			.then((data) => {
 				setJobs(data.rows || [])

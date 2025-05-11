@@ -43,7 +43,7 @@ export default function JobDetail() {
 		const annonId = getAnnonId()
 		try {
 			const res = await fetch(
-				`http://172.20.10.3:3001/users/${annonId}/savedJobs/${jobId}`,
+				`http://localhost:3001/users/${annonId}/savedJobs/${jobId}`,
 				{
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
@@ -66,7 +66,7 @@ export default function JobDetail() {
 	const fetchJobDetail = async () => {
 		const annonId = getAnnonId()
 		const response = await fetch(
-			`http://172.20.10.3:3001/jobs/${jobId}?annonId=${annonId}`
+			`http://localhost:3001/jobs/${jobId}?annonId=${annonId}`
 		).then((data) => data.json())
 		setJob(response)
 		console.log(response)

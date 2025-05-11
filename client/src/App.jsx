@@ -18,7 +18,7 @@ function App() {
 	useEffect(() => {
 		const annonId = getAnnonId()
 
-		fetch(`http://172.20.10.3:3001/users/${annonId}`, {
+		fetch(`http://localhost:3001/users/${annonId}`, {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 		})

@@ -4,6 +4,7 @@ import CardJob from "../CardJob/CardJob"
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import JobFilter from "../jobFilter/JobFilter"
+import { Toaster } from "react-hot-toast"
 
 export default function JobList() {
 	const [jobs, setJobs] = useState([])
@@ -41,7 +42,7 @@ export default function JobList() {
 	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
-		fetch(`http://172.20.10.3:3001/jobs/categories`)
+		fetch(`http://localhost:3001/jobs/categories`)
 			.then((response) => {
 				return response.json()
 			})
@@ -51,7 +52,7 @@ export default function JobList() {
 	}, [])
 
 	useEffect(() => {
-		fetch(`http://172.20.10.3:3001/jobs/locations`)
+		fetch(`http://localhost:3001/jobs/locations`)
 			.then((response) => {
 				return response.json()
 			})
@@ -69,7 +70,7 @@ export default function JobList() {
 	useEffect(() => {
 		setLoading(true)
 		fetch(
-			`http://172.20.10.3:3001/jobs?title=${queryInput}&offset=${
+			`http://localhost:3001/jobs?title=${queryInput}&offset=${
 				page * 9
 			}&category=${filters.category}&location=${filters.location}`
 		)

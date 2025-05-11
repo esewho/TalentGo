@@ -19,7 +19,12 @@ export default function NavBar() {
 		<nav className={style.containerNav}>
 			<div className={style.navItems}>
 				<div>
-					<p className={style.pLogo}>TALENTGO</p>
+					<button
+						onClick={() => navigate("/home")}
+						style={{ background: "none", border: "none" }}
+					>
+						<p className={style.pLogo}>TALENTGO</p>
+					</button>
 				</div>
 				<div className={style.input}>
 					<input
@@ -48,14 +53,6 @@ export default function NavBar() {
 							<path fill="#666666" d="M4 22V6h12v16l-6-3zm14-4V4H7V2h13v16z" />
 						</svg>
 					</button>
-					<Link to="/Applied Jobs">
-						<svg width="32" height="32" viewBox="0 0 24 24">
-							<path
-								fill="#666666"
-								d="m19.65 20.35l.7-.7l-1.85-1.85V15h-1v3.2zM10 6h4V4h-4zm8 17q-2.075 0-3.537-1.463T13 18t1.463-3.537T18 13t3.538 1.463T23 18t-1.463 3.538T18 23M4 21q-.825 0-1.412-.587T2 19V8q0-.825.588-1.412T4 6h4V4q0-.825.588-1.412T10 2h4q.825 0 1.413.588T16 4v2h4q.825 0 1.413.588T22 8v4.275q-.875-.625-1.9-.95T18 11q-2.9 0-4.95 2.05T11 18q0 .775.163 1.538T11.675 21z"
-							/>
-						</svg>
-					</Link>
 					<Link to="/home">
 						<svg width="32" height="32" viewBox="0 0 24 24">
 							<path fill="#666666" d="M4 21V9l8-6l8 6v12h-6v-7h-4v7z" />
