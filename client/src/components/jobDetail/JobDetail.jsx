@@ -39,6 +39,31 @@ export default function JobDetail() {
 		window.open(`${job.url}`, "_blank")
 	}
 
+	const handleUnsaved = async () => {
+		const annonId = getAnnonId()
+
+		try {
+			const res = await fetch(
+				`http://localhost:3001/users/${annonId}/savedJobs/${jobId}`,
+				{
+					method: "DELETE",
+					headers: { "Content-Type": "application/json" },
+				}
+			)
+			if (!res.ok) {
+				toast.error("Failed to unsave")
+			}
+			if (res.ok) {
+				toast.success("Unsaved correctly!")
+				setJob((prev) => {
+					return { ...prev, isSaved: false }
+				})
+			}
+		} catch (error) {
+			console.log(error)
+		}
+	}
+
 	const handleSave = async () => {
 		const annonId = getAnnonId()
 		try {
@@ -47,12 +72,14 @@ export default function JobDetail() {
 				{
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify({ jobId: jobId }),
 				}
 			)
 			if (!res.ok) throw new Error("Failed to save")
 			if (res.ok) {
 				toast.success("Saved successfully!")
+				setJob((prev) => {
+					return { ...prev, isSaved: true }
+				})
 			}
 		} catch (error) {
 			console.error("Error saving the job", error)
@@ -282,8 +309,11 @@ export default function JobDetail() {
 					<button onClick={handlerApplyJob} className={style.buttonApply}>
 						Apply for job
 					</button>
-					<button onClick={handleSave} className={style.buttonSave}>
-						Save
+					<button
+						onClick={job.isSaved ? handleUnsaved : handleSave}
+						className={style.buttonSave}
+					>
+						{job.isSaved ? "Remove from saveds" : "Save"}
 					</button>
 				</div>
 			</div>

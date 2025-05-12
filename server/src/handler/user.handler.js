@@ -28,10 +28,15 @@ class UserHandler {
 
 	static async removeJobsFromUserHandler(req, res) {
 		try {
-			const { userId, jobId } = req.params
-			const message = await UserController.removeJobFromUser(userId, jobId)
+			const { annonId, jobId } = req.params
+			console.log(annonId)
+			console.log(jobId)
+
+			const message = await UserController.removeJobFromUser(annonId, jobId)
+
 			return res.status(200).json(message)
 		} catch (error) {
+			console.log(error)
 			return res.status(500).json({ error: message.error })
 		}
 	}

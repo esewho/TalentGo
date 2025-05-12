@@ -61,13 +61,14 @@ class JobsController {
 					through: { attributes: [] },
 				},
 			})
-			if (jobFromDb) {
-				return jobFromDb
+			if (!jobFromDb) {
+				throw new Error("No jobs found")
 			}
 			if (annonId) {
 				const user = await User.findOne({
 					where: { annonId },
 				})
+
 				if (user) {
 					const saved = await user.hasSavedJobs(jobFromDb)
 					jobFromDb.dataValues.isSaved = saved
@@ -75,6 +76,7 @@ class JobsController {
 					jobFromDb.dataValues.isSaved = false
 				}
 			}
+			return jobFromDb
 		} catch (error) {
 			throw new Error(
 				`Error al obtener el trabajo con ID ${idJob}: ${error.message}`

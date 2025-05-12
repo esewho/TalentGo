@@ -37,19 +37,25 @@
 
 .input {
 	display: flex;
-	flex-direction: row;
 	align-items: center;
 }
 .input input {
 	background-color: var(--secondary-bg);
-	width: 250px;
-	height: 25px;
 	color: var(--primary-text);
-	border: 3px solid var(--primary-border);
-	border-radius: 5px;
-	outline: 2px solid var(--primary-border);
+	width: 100%;
+	max-width: 300px;
+	height: 36px;
+	padding: 0 12px;
+	border: 1.5px solid var(--primary-border);
+	border-radius: 8px;
+	outline: none;
+	transition: border 0.2s ease, box-shadow 0.2s ease;
+	font-size: 14px;
 }
-
+.input input:focus {
+	border-color: var(--primary-color);
+	box-shadow: 0 0 0 3px rgba(100, 100, 255, 0.1);
+}
 .input button {
 	background: none;
 	border: none;

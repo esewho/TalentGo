@@ -47,11 +47,11 @@ class UserController {
 		})
 	}
 	static async removeJobFromUser(annonId, jobId) {
-		const user = await User.findOne(annonId)
+		const user = await User.findOne({ where: { annonId } })
 		const job = await Job.findByPk(jobId)
 		if (!user || !job) throw new Error("User or job not found")
 
-		await user.removeJob(job)
+		await user.removeSavedJob(job)
 		return "Job removed successfully!"
 	}
 }
