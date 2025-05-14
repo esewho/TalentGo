@@ -78,9 +78,9 @@ export default function CreateJobForm() {
 				headers: { "Content-Type": "application/json" },
 			})
 			const jobId = response.data.id
-			navigate(`/jobs/${jobId}`)
 			// console.log("Job created: ", response.data)
 			toast.success("Succesfully created!")
+			navigate(`/home/${jobId}`)
 		} catch (error) {
 			console.error("Failed to create", error)
 			alert("Something went bad")

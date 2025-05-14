@@ -3,6 +3,7 @@
 	flex-direction: row;
 	width: 100%;
 	justify-content: space-around;
+	gap: 5px;
 	align-items: center;
 	padding-bottom: 15px;
 	margin-top: 15px;

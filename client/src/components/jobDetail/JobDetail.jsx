@@ -3,6 +3,7 @@ import style from "./jobDetail.module.css"
 import { useParams, useLocation } from "react-router-dom"
 import { getAnnonId } from "../../../utils/annonId"
 import toast from "react-hot-toast"
+import Modal from "../Modal/Modal"
 
 const splitSkills = (jobTags = []) => {
 	if (!Array.isArray(jobTags)) {
@@ -192,36 +193,18 @@ export default function JobDetail() {
 						>
 							Skills: {splitSkills(job.tags)}
 						</p>
-						{open && (
-							<div className={style.containerSkills}>
-								{open && (
-									<div className={style.listItems}>
-										{/* Verifica si job.tags es un array antes de intentar hacer .map() */}
-										{Array.isArray(job.tags) && job.tags.length > 0 ? (
-											job.tags.map((tag, index) => (
-												<p>
-													<li key={index}>{tag}</li>
-												</p>
-											))
-										) : (
-											<p>No skills available</p> // O cualquier mensaje alternativo si no hay tags
-										)}
-									</div>
-								)}
-
-								<div
-									onClick={() => setOpen(false)}
-									style={{
-										position: "fixed",
-										top: 0,
-										left: 0,
-										width: "100%",
-										height: "100%",
-										zIndex: 10,
-									}}
-								/>
-							</div>
-						)}
+						<div>
+							<Modal isOpen={open} onClose={() => setOpen(false)}>
+								<h3>Skills requeridas</h3>
+								<ul>
+									{Array.isArray(job.tags) && job.tags.length > 0 ? (
+										job.tags.map((tag, index) => <li key={index}>{tag}</li>)
+									) : (
+										<p>No skills</p>
+									)}
+								</ul>
+							</Modal>
+						</div>
 					</div>
 
 					<div className={style.containerLogo}>

@@ -28,7 +28,6 @@ section {
 	background: var(--secondary-bg);
 	color: var(--primary-text);
 	padding: 0px 20px;
-
 	border-radius: 10px;
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 	width: 45%;
@@ -46,7 +45,7 @@ section {
 }
 
 input {
-	width: 250px;
+	width: 225px;
 	padding: 10px;
 	border: 1px solid var(--primary-border);
 	border-radius: 5px;
