@@ -2,19 +2,33 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	top: 50px;
 	height: 100vh;
-	background-image: url("https://source.unsplash.com/1600x900/?technology,work");
-	background-size: cover;
+	background-image: url("../../../public/ChatGPT\ Image\ 15\ may\ 2025\,\ 13_24_16.png");
+	background-size: contain;
 	background-position: center;
 	background-color: var(--primary-bg);
 	color: var(--primary-text);
 }
+@keyframes slideBackground {
+	from {
+		background-position: 0 center;
+	}
+	to {
+		background-position: 1000px center;
+	}
+}
+
+.landingContainer {
+	animation: slideBackground 15s linear infinite;
+}
 
 .landingContent {
 	text-align: center;
-	background: var(--secondary-bg);
+	background-color: rgba(118, 117, 117, 0.252);
 	padding: 20px;
 	border-radius: 10px;
+	backdrop-filter: blur(50px);
 }
 
 .buttonLanding {
