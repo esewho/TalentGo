@@ -195,7 +195,7 @@ export default function JobDetail() {
 						</p>
 						<div>
 							<Modal isOpen={open} onClose={() => setOpen(false)}>
-								<h3>Skills requeridas</h3>
+								<h3>Required skills</h3>
 								<ul>
 									{Array.isArray(job.tags) && job.tags.length > 0 ? (
 										job.tags.map((tag, index) => <li key={index}>{tag}</li>)
