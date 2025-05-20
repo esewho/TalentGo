@@ -6,6 +6,7 @@ import axios from "axios"
 import ReactQuill from "react-quill"
 import "react-quill/dist/quill.snow.css"
 import toast from "react-hot-toast"
+import Modal from "../Modal/Modal"
 
 const splitSkills = (jobTags = []) => {
 	if (jobTags.length < 3) {
@@ -350,6 +351,7 @@ export default function CreateJobForm() {
 										? splitSkills(jobData.tags.split(","))
 										: "Javascript, React, Sequelize..."}
 								</p>
+
 								{isOpen && (
 									<div className={style.containerSkills}>
 										{jobData.tags.split(",").map((tag) => (
